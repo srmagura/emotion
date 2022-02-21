@@ -3986,8 +3986,8 @@ __metadata:
     dtslint: ^4.2.1
     enzyme-to-json: ^3.6.1
     preact: ^10.6.6
-    preact-render-to-json: ^3.6.6
-    pretty-format: ^22.4.3
+    preact-render-to-string: ^5.1.20
+    pretty-format: ^27.5.1
     react: 16.14.0
     react-dom: 16.14.0
     specificity: ^0.4.1
@@ -33068,12 +33068,14 @@ dts-critic@latest:
   languageName: node
   linkType: hard
 
-"preact-render-to-json@npm:^3.6.6":
-  version: 3.6.6
-  resolution: "preact-render-to-json@npm:3.6.6"
+"preact-render-to-string@npm:^5.1.20":
+  version: 5.1.20
+  resolution: "preact-render-to-string@npm:5.1.20"
+  dependencies:
+    pretty-format: ^3.8.0
   peerDependencies:
-    preact: "*"
-  checksum: ed10e814852d998d86ec88fc999493194ddaf30e08496b73d14ae8a18c5f05cb6dc6bfdbfd575a80fd14c5cf07a3befd7e791cb24099e084ff1e103f80ae008c
+    preact: ">=10"
+  checksum: 69e36751415cd81b68ac23811122e674f761efca0f5365b5ac90e62498ee1f4d25abe718b6c21f52faa8764582a667378fe1817dadba69ad24259033fddd6d21
   languageName: node
   linkType: hard
 
@@ -33198,16 +33200,6 @@ dts-critic@latest:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^22.4.3":
-  version: 22.4.3
-  resolution: "pretty-format@npm:22.4.3"
-  dependencies:
-    ansi-regex: ^3.0.0
-    ansi-styles: ^3.2.0
-  checksum: 300f4fcf32b6d49cd4e6ed81ee20e4e5484ffb55d3791f1ffe7a5f410d0ed14027134fc04e0032bc09b4a44e548472ead12663384c44bc5813eb5f61fe244830
-  languageName: node
-  linkType: hard
-
 "pretty-format@npm:^23.6.0":
   version: 23.6.0
   resolution: "pretty-format@npm:23.6.0"
@@ -33263,6 +33255,24 @@ dts-critic@latest:
     ansi-styles: ^5.0.0
     react-is: ^17.0.1
   checksum: 0daaf00c4dcb35493e57d30147e8045d0c45cb47fc4c94e3ab1892401abe939627c39975c77cc81eb2581aaa5b12bf23ef669fa550bec68b396fb79dd8c10afa
+  languageName: node
+  linkType: hard
+
+"pretty-format@npm:^27.5.1":
+  version: 27.5.1
+  resolution: "pretty-format@npm:27.5.1"
+  dependencies:
+    ansi-regex: ^5.0.1
+    ansi-styles: ^5.0.0
+    react-is: ^17.0.1
+  checksum: cf610cffcb793885d16f184a62162f2dd0df31642d9a18edf4ca298e909a8fe80bdbf556d5c9573992c102ce8bf948691da91bf9739bee0ffb6e79c8a8a6e088
+  languageName: node
+  linkType: hard
+
+"pretty-format@npm:^3.8.0":
+  version: 3.8.0
+  resolution: "pretty-format@npm:3.8.0"
+  checksum: 21a114d43ef06978f8f7f6212be4649b0b094f05d9b30e14e37550bf35c8ca24d8adbca9e5adc4cc15d9eaf7a1e7a30478a4dc37b30982bfdf0292a5b385484c
   languageName: node
   linkType: hard
 

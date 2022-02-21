@@ -2,7 +2,7 @@
 import 'test-utils/legacy-env'
 /** @jsx h */
 import { h } from 'preact'
-import render from 'preact-render-to-json'
+import render from 'preact-render-to-string'
 import prettyFormat from 'pretty-format'
 import * as emotion from '@emotion/css'
 import { createSerializer } from '@emotion/jest'
@@ -25,20 +25,12 @@ describe('jest-emotion with preact', () => {
       </div>
     )
 
-    const output = prettyFormat(tree, {
-      plugins: [emotionPlugin, ReactElement, ReactTestComponent, DOMElement]
-    })
-
-    expect(output).toMatchSnapshot()
+    expect(tree).toMatchSnapshot()
   })
 
   it('handles elements with no props', () => {
     const tree = render(<div />)
 
-    const output = prettyFormat(tree, {
-      plugins: [emotionPlugin, ReactElement, ReactTestComponent, DOMElement]
-    })
-
-    expect(output).toMatchSnapshot()
+    expect(tree).toMatchSnapshot()
   })
 })
