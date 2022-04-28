@@ -1,9 +1,7 @@
-import memoize from '@emotion/memoize'
-
-memoize<boolean>((arg: string) => !!arg)
-memoize<number, boolean>((arg: number) => !!arg)
+import memoize from '../src'
 
 // $ExpectType string[]
 memoize((arg: string) => [arg])('foo')
 
+// $ExpectError
 memoize((arg: number) => [arg])
