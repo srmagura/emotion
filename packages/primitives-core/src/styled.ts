@@ -15,10 +15,6 @@ export interface StyledOptions {
   shouldForwardProp?(prop: string): boolean
 }
 
-type StyledProps = Record<string, unknown> & {
-  as?: React.ElementType
-}
-
 export function createStyled(
   StyleSheet: AbstractStyleSheet,
   options?: CreateStyledOptions
@@ -28,7 +24,7 @@ export function createStyled(
 
   const css = createCss(StyleSheet)
 
-  return function createEmotion(
+  return function createEmotion<ComponentProps extends Record<string, unknown>>(
     component: React.ElementType,
     options?: StyledOptions
   ) {
@@ -50,16 +46,17 @@ export function createStyled(
       }
 
       // do we really want to use the same infra as the web since it only really uses theming?
-      let Styled = React.forwardRef<unknown, StyledProps>((props, ref) => {
+      let Styled: React.FC<
+        React.PropsWithoutRef<ComponentProps> & { as?: React.ElementType }
+      > = React.forwardRef<
+        unknown,
+        ComponentProps & { as?: React.ElementType }
+      >((props, ref) => {
         const finalTag = (shouldUseAs && props.as) || component
 
         let mergedProps = props
         if (props.theme == null) {
-          mergedProps = {}
-          for (let key in props) {
-            mergedProps[key] = props[key]
-          }
-          mergedProps.theme = React.useContext(ThemeContext)
+          mergedProps = { ...props, theme: React.useContext(ThemeContext) }
         }
 
         let finalShouldForwardProp =

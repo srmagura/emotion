@@ -22,12 +22,14 @@ function getShouldForwardProp(
 /**
  * a function that returns a styled component which render styles on multiple targets with same code
  */
-type CreateStyledComponent = (...styles: any) => React.FC<any> & {
+type CreateStyledComponent = <ComponentProps>(
+  ...styles: any
+) => React.FC<ComponentProps> & {
   withComponent: (component: any) => React.FC<any>
 }
 
 /** @internal */
-export type BaseStyled = (
+export type BaseStyled = <ComponentProps extends Record<string, unknown>>(
   tag: React.ElementType,
   options?: StyledOptions | undefined
 ) => CreateStyledComponent
